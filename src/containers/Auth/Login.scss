@@ -1,0 +1,84 @@
+.login-background {
+    height: 100vh;
+    background: linear-gradient(135deg,
+            rgb(0, 255, 212) 0%,
+            rgb(36, 243, 207) 10%,
+            rgb(72, 209, 204) 20%,
+            rgb(36, 200, 229) 30%,
+            rgb(0, 191, 255) 40%,
+            rgb(33, 159, 240) 50%,
+            rgb(65, 105, 225) 60%,
+            rgb(94, 104, 231) 70%,
+            rgb(123, 104, 238) 80%,
+            rgb(114, 97, 218) 90%,
+            rgb(106, 90, 205) 100%);
+
+
+    .login-container {
+        width: 400px;
+        height: 100%;
+        margin: 0 auto;
+        border-radius: 10px;
+        background-color: white;
+
+        .login-content {
+            padding: 15px;
+
+            .login-text {
+                font-weight: 600;
+                font-size: 24px;
+                padding-top: 10px;
+                text-align: center;
+            }
+
+            .login-input {
+                margin: 10px 0;
+            }
+
+            .login-btn {
+                width: 100%;
+                margin: 10px 0;
+                height: 35px;
+                border-radius: 15px;
+                outline: none;
+                border: none;
+                background: linear-gradient(135deg,
+                        rgb(0, 255, 212) 0%,
+                        rgb(36, 243, 207) 10%,
+                        rgb(72, 209, 204) 20%,
+                        rgb(36, 200, 229) 30%,
+                        rgb(0, 191, 255) 40%,
+                        rgb(33, 159, 240) 50%,
+                        rgb(65, 105, 225) 60%,
+                        rgb(94, 104, 231) 70%,
+                        rgb(123, 104, 238) 80%,
+                        rgb(114, 97, 218) 90%,
+                        rgb(106, 90, 205) 100%);
+                color: white;
+                font-weight: 600;
+            }
+
+            .forgot-password {
+                font-size: 12px;
+                cursor: pointer;
+            }
+
+            .social-login {
+                display: flex;
+                text-align: center;
+                justify-content: center;
+
+                .google-icon {
+                    font-size: 50px;
+                    color: rgb(204, 73, 73);
+                    margin-right: 10px;
+                }
+
+                .facebook-icon {
+                    font-size: 50px;
+                    color: rgb(42, 42, 235);
+                }
+            }
+        }
+    }
+}
