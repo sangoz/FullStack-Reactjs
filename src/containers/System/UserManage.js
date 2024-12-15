@@ -5,13 +5,17 @@ import './UserManage.scss';
 import { getAllUsers } from '../../services/userService';
 import { FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
+import { FaUserPlus } from "react-icons/fa";
+import ModalUser from './ModalUser';
+import { isJsxOpeningElement } from 'typescript';
 
 class UserManage extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            arrUsers: []
+            arrUsers: [],
+            isOpenModalUser: false,
         };
     }
 
@@ -24,12 +28,34 @@ class UserManage extends Component {
         }
     }
 
+    handleAddNewUser = () => {
+        this.setState({
+            isOpenModalUser: true,
+        })
+    }
+
+    toggleUserModal = () => {
+        this.setState({
+            isOpenModalUser: !this.state.isOpenModalUser,
+        })
+    }
 
     render() {
         let arrUsers = this.state.arrUsers;
         return (
             <div className="user-container">
+                <ModalUser
+                    isOpen={this.state.isOpenModalUser}
+                    toggleFromParent={this.toggleUserModal}
+                    test={"adasdasd"}
+                />
                 <div className="title text-center">Manage users</div>
+                <div className="mt-1 btn-add-new">
+                    <button className="btn btn-primary px-3 mx-1" onClick={() => this.handleAddNewUser()}>
+                        <span className="icon-add"><FaUserPlus /></span>
+                        Add new user
+                    </button>
+                </div>
                 <div className="user-table mt-3 mx-1">
                     <table id="customers">
                         <tr>

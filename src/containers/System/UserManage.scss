@@ -47,3 +47,21 @@
         width: 50px;
     }
 }
+
+.btn-add-new {
+    .icon-add {
+        margin-right: 10px;
+        font-size: 20px;
+    }
+}
+
+.modal-user-container {
+    .modal-title {
+        button {
+            background: transparent;
+            color: white;
+            border: none;
+            font-size: 30px;
+        }
+    }
+}
