@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './UserManage.scss';
-import { getAllUsers, createNewUserService } from '../../services/userService';
+import { getAllUsers, createNewUserService, deleteUserService } from '../../services/userService';
 import { FaEdit } from "react-icons/fa";
 import { FaTrash } from "react-icons/fa";
 import { FaUserPlus } from "react-icons/fa";
 import ModalUser from './ModalUser';
 import { isJsxOpeningElement } from 'typescript';
+import { emitter } from '../../utils/emitter';
 
 class UserManage extends Component {
 
@@ -47,7 +48,7 @@ class UserManage extends Component {
     createNewUser = async (data) => {
         try {
             let response = await createNewUserService(data);
-            if (response && response.errCode != 0) {
+            if (response && response.errCode !== 0) {
                 alert(response.errMessage);
             }
             else {
@@ -55,6 +56,7 @@ class UserManage extends Component {
                 this.setState({
                     isOpenModalUser: false,
                 })
+                emitter.emit('EVENT_CLEAR_MODAL_DATA');
             }
         }
         catch (e) {
@@ -62,6 +64,20 @@ class UserManage extends Component {
         }
     }
 
+    handleDeleteUser = async (user) => {
+        try {
+            let res = await deleteUserService(user.id);
+            if (res && res.errCode === 0) {
+                await this.getAllUserFromReact();
+            }
+            else {
+                alert(res.errMessage);
+            }
+        }
+        catch (e) {
+            console.log(e);
+        }
+    }
     render() {
         let arrUsers = this.state.arrUsers;
         return (
@@ -100,7 +116,7 @@ class UserManage extends Component {
                                             <td>{item.address}</td>
                                             <td>
                                                 <button className="btn-edit"><FaEdit /></button>
-                                                <button className="btn-delete"><FaTrash /></button>
+                                                <button className="btn-delete" onClick={() => this.handleDeleteUser(item)}><FaTrash /></button>
                                             </td>
                                         </tr>
                                     )
